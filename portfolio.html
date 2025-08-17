@@ -1,57 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    
     <title>Document</title>
     <style>
-        .portfolio{
-            border: 1px solid ;
-            height: 95vh;
-            margin: 1.2rem;
-            /* width: 100vw; */
-            /* display: grid;
-            grid-template-columns: 1fr 1fr; */
-        }
-        .profile-details{
-            width: 100%;
-            height: 300px;
-           
-             display: grid;
-            grid-template-columns: 1fr 2fr;
-        }
-        .profile-img{
-            border: 1px solid ;
-            width: 100%;
-            
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      .portfolio {
+        margin: 2rem;
+        min-height: 100vh;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 150px;
+      }
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        justify-content: center;
+        background-color: rgb(6, 6, 31);
+        height: 150px;
+        /* padding: 0rem; */
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .header p {
+        text-align: center;
+        /* margin: auto 0; */
+        color: white;
+        font-size: 1.5rem;
+        padding: 0.2rem;
+      }
+      .header .nav {
+        width: 71%;
+        height: 25%;
+        margin-top: 1rem;
+      }
+
+      .header .nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 100%;
+        align-items: center;
+        font-size: 1.2rem;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease-in;
+      }
+      a:hover {
+        color: orange;
+      }
+      .profile-details {
+        /* border: 1px solid ; */
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        justify-items: center;
+        height: 68vh;
+      }
+      .profile-details img {
+        max-width: 100%;
+       
+        height: 50%;
+        margin: 1rem;
+        /* border: 3px solid #04040d; */
+        box-shadow: 0px 10px 10px 2px lightgray;
+        border-radius: 2rem;
+        margin-top: 1.8rem;
+      }
+      .intro {
+        padding: 4rem 7rem 1rem 0rem;
+        width: 80%;
+        height: 50%;
+        font-size: 1rem;
+      }
+      .intro p {
+        margin-bottom: 1rem;
+      }
+
+      .skills {
+        width: 100%;
+        margin-bottom: 5rem;
+
+        /* height: 45vh; */
+        /* background-color: aquamarine; */
+      }
+      .skills-Container {
+        /* border: 1px solid; */
+
+        display: flex;
+        height: 100%;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .skills-details {
+        box-shadow: 10px 20px 10px gray;
+        padding: 0.5rem;
+        border-radius: -11rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .skills-details img {
+        width: 150px;
+        height: 150px;
+        margin: 1rem;
+      }
+      .skills-details span {
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      h2 {
+        color: orange;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding-left: 4rem;
+        padding-top: 2rem;
+      }
+
+      .education-experience {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+      h3 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: orange;
+        padding-left: 4rem;
+        padding-top: 2rem;
+      }
+      .details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* border: 1px solid; */
+      }
+
+      .item {
+       
+        background-color: white;
+        margin-top: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        line-height: 1.5rem;
+        height: 200px;
+        padding-left: 4rem;
+        padding-top: 2rem;
+        padding-right: 1.4rem;
+        transition: all 0.3s;
+      }
+      .item h4 {
+        color: #444;
+        font-size: 20px;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+      .item:hover h4 {
+        color: white;
+      }
+      .item:hover {
+        transform: translateY(-10px);
+        background-color: rgb(38, 38, 57);
+        color: white;
+      }
+      .projects-section {
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .projects-section h2 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: orange;
+        font-weight: bold;
+      }
+
+      .projects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .project-card {
+        flex: 1;
+        min-width: 300px;
+        background: white;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .project-card .content {
+        padding: 2rem;
+        line-height: 1.5rem;
+      }
+
+      .project-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #444;
+        transition: color 0.3s ease;
+      }
+      .project-card:hover h3 {
+        color: white; /* change to blue */
+      }
+      .project-card:hover {
+        transform: translateY(-10px);
+        background-color: rgb(38, 38, 57);
+        color: white;
+      }
+      .project-card p {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .contact {
+        width: 100%;
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+        display: flex;
+        gap: 20px;
+      }
+      .map {
+        flex: 1;
+      }
+      .contact-info {
+        flex: 1;
+        padding-top: 2rem;
+        background: #f4f4f4;
+        border-radius: 10px;
+      }
+
+      .contact-info h2 {
+        margin-bottom: 20px;
+        color: orange;
+      }
+      .contact-info p {
+        margin: 10px 0;
+        font-size: 19px;
+        padding-left: 3rem;
+      }
+
+      .contact-info strong {
+        color: #222;
+      }
+      .social-icons {
+        margin-top: 20px;
+        padding-left: 3rem;
+      }
+
+      .social-icons a {
+        margin-right: 15px;
+        text-decoration: none;
+        font-size: 28px;
+        color: #333;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #0077b5; /* LinkedIn blue */
+      }
+
+      .social-icons a.github:hover {
+        color: #000; /* GitHub black */
+      }
+      
     </style>
-</head>
-<body>
-   <div class="portfolio">
+  </head>
+  <body>
+    <div class="portfolio">
+      <div class="header">
+        <p>Priyanka Patil</p>
+        <p>Full Stack Java Developer</p>
+        <div class="nav">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#eduexp">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="about" id="about">
+        <h3>About</h3>
         <div class="profile-details">
-            <div class="profile-img">
+          <img
+            src="portfolio-profileimg.jpg"
+            alt="profile-img"
+            width="400"
+            height="400"
+          />
 
+          <div class="intro">
+            <p>
+              I’m a passionate and detail-oriented
+              <strong>Full Stack Java Developer</strong> with over 2 years of
+              experience building dynamic, user-friendly, and high-performance
+              applications. I specialize in developing REST APIs using
+              <strong>Java & Spring Boot</strong>, crafting beautiful UIs with
+              <strong>React.js</strong>, and managing robust databases like
+              <strong>MySQL</strong>.
+            </p>
+            <p>
+              My journey started with a curiosity for how websites work, which
+              soon turned into a full-time career of solving problems and
+              creating solutions that actually help people. I enjoy
+              collaborating with teams, learning new technologies, and writing
+              clean, maintainable code.
+            </p>
+            <p>
+              Outside of coding, I love exploring creative design ideas, keeping
+              up with tech trends, and working on personal projects that
+              challenge my skills. My goal is to keep improving every day and
+              contribute to impactful projects that make a difference.
+            </p>
+            <p>
+              Outside of coding, I love exploring creative design ideas, keeping
+              up with tech trends, and working on personal projects that
+              challenge my skills. My goal is to keep improving every day and
+              contribute to impactful projects that make a difference.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills" id="skills">
+        <h3>Skills</h3>
+        <div class="skills-Container">
+          <div class="skills-details">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              alt="Html"
+            />
+            <span class="title"> HTML </span>
+          </div>
+          <div class="skills-details">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt="Css"
+            />
+            <span class="title"> Css </span>
+          </div>
+          <div class="skills-details">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript"
+            />
+            <span class="title"> JavaScript</span>
+          </div>
+          <div class="skills-details">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              alt="React"
+            />
+            <span class="title"> React</span>
+          </div>
+          <div class="skills-details">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+              alt="Java"
+            />
+            <span class="title"> Java</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="education-experience" id="eduexp">
+        <div class="details">
+          <div class="experience" style=" flex: 1;">
+            <h3>Education</h3>
+            <div class="item">
+              <h4>Master of Computer Application</h4>
+              <span>XYZ University • 2018 - 2021</span>
+              <p>
+                Post Graduated with Distinction. Specialized in software
+                development and web technologies.
+              </p>
             </div>
-            <div class="intro">
-
+          </div>
+          <div class="education"  style=" flex: 1;">
+            <h3>Experience</h3>
+            <div class="item">
+              <h4>Software Development</h4>
+              <span>WebTech • Jan 2022 - Jun 2025</span>
+              <p>
+                Worked on frontend development using HTML, CSS, JavaScript, and
+                React.
+              </p>
+              <p>
+                Worked on backend development using Java,Spring MVC,Hibernate
+                and Spring Boot.
+              </p>
             </div>
+          </div>
         </div>
-        <div class="skills">
+      </div>
 
-        </div>
-        <div class="education-experience">
-
-        </div>
+      <div class="projects-section" id="projects">
+        <h2>My Projects</h2>
         <div class="projects">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="content">
+              <h3>Quantolearn (E-Learning Platform)</h3>
+              <p>
+                Quantolearn is an online learning platform where students can
+                access programming courses based on their age and interest. The
+                platform provides free and paid courses, OTP-based
+                authentication, and secure payments with Razorpay.
+              </p>
+            </div>
+          </div>
 
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="content">
+              <h3>Auto Account Loader</h3>
+              <p>
+                A finance management tool that automatically loads and organizes
+                user account transactions. The system integrates with banking
+                APIs and helps users track expenses and manage balances
+                efficiently.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="hobbbies">
-
+      </div>
+      <div class="contact" id="contact">
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30259.774120534486!2d73.92539528414868!3d18.552758068657457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c3288ba495%3A0x38e833613a63004a!2sKharadi%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1755435862571!5m2!1sen!2sin"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
-        <div class="address">
-
+        <div class="contact-info">
+          <h2>Contact Me</h2>
+          <p><strong>Address:</strong> Pune, Maharashtra, India</p>
+          <p><strong>Email:</strong> priyanka@example.com</p>
+          <p><strong>Phone:</strong> +91 9876543210</p>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://github.com/Priyanka-Rote"
+              target="_blank"
+              class="github"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
         </div>
-   </div>
-</body>
+      </div>
+    </div>
+  </body>
 </html>
